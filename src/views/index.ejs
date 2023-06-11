@@ -1,0 +1,43 @@
+<%- include("./shared/static/header") %>
+  <div class="home bg-dark">
+    <div class="container-fluid">
+      <div class="row login align-content-center justify-content-center ">
+        <div class="col-md-8  ">
+          <form action="/" method="POST" class="text-info">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label ">Product Key </label>
+              <input value="<%= oldData?.productId %>" type="text" name="productId" class="form-control text-primary input" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+
+              <% if (productIdError) { %>
+                <div class="text-warning p-1">
+                  <%= productIdError %> 
+                </div>
+                <% } %>
+
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input value="<%= oldData?.password %>" type="password" name="password" class="form-control  text-primary input" id="exampleInputPassword1">
+              <div id="emailHelp" class="form-text  text-secondary">We'll never share your password with anyone else.
+              </div>
+              <% if (passwordError) { %>
+                <div class="text-warning p-1">
+                  <%= passwordError %>
+                </div>
+                <% } %>
+
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+              </div>
+              <button class="btn btn-primary">LogIn</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>  
+  </div>
+  </div>
+  <%- include("./shared/static/footer") %>

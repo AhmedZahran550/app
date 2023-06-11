@@ -1,0 +1,152 @@
+nav{
+    z-index: 9;
+    }
+    
+    .logo{
+      width: 8rem;
+      margin-top: 1rem;
+      margin-right: 1rem;
+    }
+    .nav-link:focus, .nav-link:hover{
+      color:#97CADB !important;
+    }
+    @media only screen and (max-width: 600px){
+    
+      .form-control{
+        width: 50%;
+      }
+      .nav-link{
+        margin: auto;
+        text-align: center;
+      }
+      .dropdown-menu{
+        border: none !important;
+        text-align: center;
+    
+      }
+      .dropdown-item.active, .dropdown-item:active{
+        background-color: transparent;
+        color: #97CADB;
+      }
+      .logo{
+        margin-top: 0%;
+      }
+    
+    }
+    
+    
+    
+    /* App.css */
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    
+    .register-popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+    
+    .register-popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .register form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .close {
+      margin-top: 10px;
+    }
+    
+    
+    
+    
+    
+    
+    .add_icon{
+      color: #22afde;
+    }
+    
+    /*  footer  */
+
+
+    .foot1{
+        background-color: #97CADB;
+        text-align: center;
+        width: 100%;
+        color: #001B48;
+      }
+      .foot2{
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e); 
+        width: 100%;
+        color: #fff !important;
+      }
+      .copy{
+        font-size: x-small;
+      }
+      .sign{
+        color:#0095FF;
+      }
+      .breathe{
+        border: 2px  solid #0095FF;
+        border-radius: 50%;
+        /* padding: .25rem; */
+    
+        width: 2px;
+        height: 2rem;
+      }
+      .btn_color{
+        background-color:#001B48;
+        color: #fff;
+        border-radius: .5rem;
+        border: none;
+      }
+      .btn_color:hover{
+        background-color: #0f0c29;
+        color: #fff;
+      }
+      footer{
+        overflow-x: hidden;
+        margin-top: 5rem;
+      }
+      /* ----------------
+      responsive 
+      ----------------- */
+      
+      /* Mobile */
+      @media (max-width: 767px) {
+        
+        
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

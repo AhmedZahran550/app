@@ -1,0 +1,15 @@
+
+.home
+{
+    background: center center url(../images/vishnu-mohanan-nLgrPHcqPJE-unsplash.jpg) no-repeat ;
+    background-size: cover;
+}
+
+.login
+{
+    height: 100vh;
+}
+.input
+{
+    background-color: rgba(8, 8, 8, 0.192);
+}
