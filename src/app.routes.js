@@ -7,7 +7,7 @@ import { globalError } from "./middleware/errorHandling.js";
 import adminRouter from "./modules/auth/auth.routes.js";
 import productRouter from "./modules/product/product.routes.js";
 import codeRouter from "./modules/codes/code.routes.js";
-import apiRouter from "./modules/api/api.routes.js";
+import apiRouter from "./modules/kit/api.routes.js";
 import mongoDBStore from "connect-mongodb-session";
 import cors from 'cors'
 
