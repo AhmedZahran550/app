@@ -4,12 +4,16 @@ import { getCompered, getHashed } from "../../../utils/hashPassword.js";
 
 // start of  login page
 export const displayLoginPage = asyncHandler(async (req, res, next) => {
+  if (req.session?.product) {
+    return res.redirect("/home");
+  }
   return res.render("index", {
     pageTitle: "home page",
     css: "./shared/css/style.css",
     oldData: req.flash("oldData")[0],
     productIdError: req.flash("productIdError")[0],
     passwordError: req.flash("passwordError")[0],
+    endSession: req.session.destroy(),
   });
 });
 
@@ -37,12 +41,8 @@ export const loginToDashboard = asyncHandler(async (req, res, next) => {
 });
 // end of login page
 
-
 // start of home page
 export const displayHome = asyncHandler(async (req, res, next) => {
-  if (!req.session?.product) {
-    return res.redirect("/");
-  }
   return res.render("home", {
     pageTitle: "home page",
     css: "/shared/css/home.css",
@@ -73,11 +73,14 @@ export const updateProductPassword = asyncHandler(async (req, res, next) => {
   return res.json({ message: "done" });
 });
 
-//  this how to destroy a session
-// req.session.destroy(err => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     res.redirect('/login');
-//   }
-// });
+// logOut from the product home
+export const Logout = asyncHandler(async (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+

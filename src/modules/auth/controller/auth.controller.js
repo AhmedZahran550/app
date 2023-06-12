@@ -40,13 +40,13 @@ export const login = asyncHandler(async (req, res, next) => {
     return res.redirect('/admin');
   }
  req.session.admin={
-  id:admin._id,
+  _id:admin._id,
   email:admin.email
  }
   return res.redirect("/admin/home");
 });
 
-
+  
 export const displayAdminHome = asyncHandler(async (req, res, next) => {
   return res.render("adminHome", {
     pageTitle: "Admin Home",

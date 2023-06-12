@@ -15,6 +15,6 @@ export const login = asyncHandler(async (req, res, next) => {
     if (!getCompered(password, product.password)) {
       return next(new Error("in-valid password" ,  {cause:409}));
     }
-    const token = genToken({data:{id:product._id ,productId} , signature:process.env.TOKEN_SIGNATURE})
-    return res.json({message:"done" , token});
+      const data = {...product}
+    return res.json({message:"done" ,data});
   });

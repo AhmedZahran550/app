@@ -4,17 +4,29 @@ import { productModel } from './../../DB/models/product/product.model.js';
 import { adminModel } from './../../DB/models/admin/admin.model.js';
 import  jwt  from 'jsonwebtoken';
 
-export const adminSession =asyncHandler(async(req,res,next)=>{
-    if (!req.session.admin) {
-        return next(new Error("login first"));
+export const authSession =asyncHandler(async(req,res,next)=>{
+    if (!req.session?.product?._id) {
+    req.flash("productIdError", "Session Expired pls login");
+    return res.redirect("/");
     }
-    const admin = await adminModel.findById(req.session?.admin?.id);
-    if (!admin) {
-        return next(new Error("in-valid Admin"));
+    else{
+        return next()
     }
-    req.admin = admin; 
-    return next();
+
 })
+
+ 
+export const adminSession =asyncHandler(async(req,res,next)=>{
+    if (!req.session?.admin?._id) {
+    req.flash("emailError", "Session Expired pls login");
+    return res.redirect("/admin");
+    }
+    else{
+        return next()
+    }
+
+})
+
 
 
 export const adminToken =asyncHandler(async(req,res,next)=>{
