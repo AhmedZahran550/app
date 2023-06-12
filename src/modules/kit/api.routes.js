@@ -3,7 +3,7 @@ import * as controller from './controller/api.js'
 
 const router = Router()
 
-router.post("/getData" , controller.login)
+router.get("/getData" , controller.login)
 
 
 
