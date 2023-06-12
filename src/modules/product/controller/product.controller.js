@@ -94,8 +94,6 @@ export const Logout = asyncHandler(async (req, res, next) => {
 
 // change in the product parameters
 export const changeParameters = asyncHandler(async (req, res, next) => {
-      console.log(req.session.product);
-      const {withCode} = req.query ; 
       const product = await productModel.findByIdAndUpdate(req.session.product._id ,req.query);
       return res.json({message:"done" ,product})
 });

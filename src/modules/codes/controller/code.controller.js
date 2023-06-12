@@ -9,7 +9,7 @@ export const addCode = asyncHandler(async (req, res, next) => {
   const newCode = await codeModel.create({
     text,
     productId: req.params.productId,
-    characters: text?.length,
+    length: text?.length,
     fileUrl: req.file.url,
   });
   return res.json({ newCode });

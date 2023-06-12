@@ -28,10 +28,10 @@ const schema = new Schema({
         type:Boolean,
         default:false
      },
-     restartWithCode:{
-        type:Boolean,
-        default:false
-     }
+     codeId:{
+        type:Types.ObjectId,
+        ref:"Code",
+     }  
      
 },
     {
