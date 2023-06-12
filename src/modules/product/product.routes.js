@@ -16,4 +16,8 @@ router.patch("/changPassword", productToken, controller.updateProductPassword);
 router.get("/logout", authSession , controller.Logout);
 
 
+// change parameters
+router.get("/param",authSession,controller.changeParameters)
+
+
 export default router;

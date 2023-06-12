@@ -15,7 +15,24 @@ const schema = new Schema({
     password:{
         type:String ,
         required:true
-    }
+    },
+    refresh:{
+        type:Boolean,
+        default:false
+    },
+    close:{
+        type:Boolean,
+        default:false
+    },
+     restart:{
+        type:Boolean,
+        default:false
+     },
+     restartWithCode:{
+        type:Boolean,
+        default:false
+     }
+     
 },
     {
         timestamps: true

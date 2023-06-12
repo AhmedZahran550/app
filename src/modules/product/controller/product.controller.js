@@ -49,6 +49,7 @@ export const displayHome = asyncHandler(async (req, res, next) => {
   });
 });
 
+
 export const addProduct = asyncHandler(async (req, res, next) => {
   const { productId, password } = req.body;
   const product = await productModel.findOne({
@@ -61,10 +62,12 @@ export const addProduct = asyncHandler(async (req, res, next) => {
   const newProduct = await productModel.create({
     productId: productId.toLowerCase(),
     password: hash,
-    adminId: req.admin._id,
+    adminId: req.session?.admin?._id,
   });
   return res.json({ message: "created", newProduct });
 });
+
+
 
 export const updateProductPassword = asyncHandler(async (req, res, next) => {
   const { password } = req.body;
@@ -72,6 +75,8 @@ export const updateProductPassword = asyncHandler(async (req, res, next) => {
   await productModel.updateOne({ _id: req.product._id }, { password: hash });
   return res.json({ message: "done" });
 });
+
+
 
 // logOut from the product home
 export const Logout = asyncHandler(async (req, res, next) => {
@@ -84,3 +89,12 @@ export const Logout = asyncHandler(async (req, res, next) => {
   });
 });
 
+
+
+// change in the product parameters
+export const changeParameters = asyncHandler(async (req, res, next) => {
+      console.log(req.session.product);
+      console.log(req.query);
+      const product = await productModel.findByIdAndUpdate(req.session.product._id ,req.query)
+      return res.json({message:"done"})
+});

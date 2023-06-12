@@ -15,6 +15,6 @@ export const login = asyncHandler(async (req, res, next) => {
   if (!getCompered(password, product.password)) {
     return next(new Error("in-valid password", { cause: 409 }));
   }
-  const data = { ...product._doc };
+  const data = { ...product._doc};
   return res.json({ message: "done", data });
 });

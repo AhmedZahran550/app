@@ -9,9 +9,13 @@ export const authSession =asyncHandler(async(req,res,next)=>{
     req.flash("productIdError", "Session Expired pls login");
     return res.redirect("/");
     }
-    else{
-        return next()
+    const product = await productModel.findById(req.session?.product?._id);
+    if (!product){
+        req.flash("productIdError", "In-valid product Id ");
+        return res.redirect("/");
     }
+    
+    return next();
 
 })
 
