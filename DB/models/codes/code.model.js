@@ -3,7 +3,7 @@ import mongoose, { model, Schema, Types } from "mongoose";
 
 const schema = new Schema(
   {
-    characters: {
+    length: {
       type: Number,
       required: true,
     },

@@ -1,12 +1,13 @@
 import { asyncHandler } from "./../../../middleware/errorHandling.js";
 import { productModel } from "./../../../../DB/models/product/product.model.js";
 import { getCompered, getHashed } from "../../../utils/hashPassword.js";
+import { codeModel } from './../../../../DB/models/codes/code.model.js';
 
 // start of  login page
 export const displayLoginPage = asyncHandler(async (req, res, next) => {
   if (req.session?.product) {
     return res.redirect("/home");
-  }
+  } 
   return res.render("index", {
     pageTitle: "home page",
     css: "./shared/css/style.css",
@@ -94,7 +95,7 @@ export const Logout = asyncHandler(async (req, res, next) => {
 // change in the product parameters
 export const changeParameters = asyncHandler(async (req, res, next) => {
       console.log(req.session.product);
-      console.log(req.query);
-      const product = await productModel.findByIdAndUpdate(req.session.product._id ,req.query)
-      return res.json({message:"done"})
+      const {withCode} = req.query ; 
+      const product = await productModel.findByIdAndUpdate(req.session.product._id ,req.query);
+      return res.json({message:"done" ,product})
 });
