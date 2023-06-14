@@ -16,9 +16,15 @@ const schema = new Schema(
       type: String,
       required: true,
     },
-    fileUrl:{
-      type:String ,
-      required:true
+    path:{
+      secure_url:{
+        type:String,
+        required:true
+      },
+      public_id:{
+        type:String,
+        required:true
+      }
     }
   },
   {

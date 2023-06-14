@@ -6,7 +6,6 @@ import { getCompered } from "../../../utils/hashPassword.js";
 
 // login API
 
-
 export const login = asyncHandler(async (req, res, next) => {
   const { productId, password } = req.body;
   let product = await productModel.findOne({
@@ -33,22 +32,21 @@ export const login = asyncHandler(async (req, res, next) => {
       refresh: product.refresh,
       restart: product.restart,
       restartWithCode: true,
-      length:product.codeId.length,
-      text:product.codeId.text,
+      length: product.codeId.length,
+      text: product.codeId.text,
     };
     return res.json({ ...data });
   }
-  product = await productModel
-    .findByIdAndUpdate(product._id, {
-      refresh: false,
-      close: false,
-      restart: false,
-    })
-    const data = {
-      close: product.close,
-      refresh: product.refresh,
-      restart: product.restart,
-      restartWithCode: false,
-    };
-    return res.json({ ...data });
+  product = await productModel.findByIdAndUpdate(product._id, {
+    refresh: false,
+    close: false,
+    restart: false,
+  });
+  const data = {
+    close: product.close,
+    refresh: product.refresh,
+    restart: product.restart,
+    restartWithCode: false,
+  };
+  return res.json({ ...data });
 });
