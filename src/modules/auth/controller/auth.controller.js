@@ -2,6 +2,7 @@ import { adminModel } from "../../../../DB/models/admin/admin.model.js";
 import { getCompered, getHashed } from "../../../utils/hashPassword.js";
 import { asyncHandler } from "./../../../middleware/errorHandling.js";
 import jwt from "jsonwebtoken";
+import { productModel } from "../../../../DB/models/product/product.model.js";
 
 export const addAdmin = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
@@ -52,4 +53,24 @@ export const displayAdminHome = asyncHandler(async (req, res, next) => {
     pageTitle: "Admin Home",
     css: "/shared/css/adminHome.css",
   });
+});
+
+
+
+//  adding product ======================
+export const addProduct = asyncHandler(async (req, res, next) => {
+  const { productId, password } = req.body;
+  const product = await productModel.findOne({
+    productId: productId.toLowerCase(),
+  });
+  if (product) {
+    return next(new Error("Duplicated productId "));
+  }
+  const hash = getHashed(password);
+  const newProduct = await productModel.create({
+    productId: productId.toLowerCase(),
+    password: hash,
+    adminId: req.session?.admin?._id,
+  });
+  return res.json({ message: "created", newProduct });
 });

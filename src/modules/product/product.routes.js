@@ -4,20 +4,38 @@ import { adminSession, authSession, productToken } from "./../../middleware/auth
 
 const router = Router();
 
-router.get("/", controller.displayLoginPage);
-router.post("/", controller.loginToDashboard);
 
-router.get("/home", authSession , controller.displayHome);
+//================display home
+router.get("/" , controller.displayHome);
+
+
+
+//================login======
+router.get("/login", controller.displayLoginPage);
+router.post("/login", controller.loginToDashboard);
+
  
-router.post("/add", adminSession, controller.addProduct);
+//===============displayProfile
+router.get("/profile",authSession,controller.displayProfile)
+
+
+//===============change parameters
+router.get("/param",authSession,controller.changeParameters);
+
+
 router.patch("/changPassword", productToken, controller.updateProductPassword);
 
-// logout 
+
+
+// ==============productList 
+
+router.get("/productList" , controller.productList)
+
+//================logout 
 router.get("/logout", authSession , controller.Logout);
 
 
-// change parameters
-router.get("/param",authSession,controller.changeParameters)
+
 
 
 export default router;

@@ -24,7 +24,7 @@ const schema = new Schema({
         type:Boolean,
         default:false
     },
-     restart:{
+    restart:{
         type:Boolean,
         default:false
      },

@@ -43,9 +43,9 @@ export const initApp = (app, express) => {
   );
   
   app.use(flash());
+  app.use("/", productRouter);
   app.use("/api", apiRouter);
   app.use("/admin", adminRouter);
-  app.use("/", productRouter);
   app.use("/code", codeRouter);
 
 
