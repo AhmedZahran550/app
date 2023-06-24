@@ -63,10 +63,13 @@ export const loginToDashboard = asyncHandler(async (req, res, next) => {
 
 // start of profile page
 export const displayProfile = asyncHandler(async (req, res, next) => {
+  const codes = await codeModel.find({productId:req.product._id}).sort({'createdAt': 1});
+  console.log(codes[0]);
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
     productInfo: req.flash("productInfo")[0],
+    codes,
     isLogged: true,
   });
 });

@@ -13,11 +13,12 @@ export const addCode = asyncHandler(async (req, res, next) => {
     req.file?.path,
     { folder: `files/${req.params?.productId}`, resource_type: "auto" }
   );
-
-  const newCode = await codeModel.create({
+  
+  let newCode = await codeModel.create({
     text,
-    productId: req.params.productId,
+    productId:req.params.productId,
     length: text?.length,
+    description:req.body.description,
     path: { secure_url, public_id },
   });
   return res.json({ newCode });

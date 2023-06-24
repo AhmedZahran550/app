@@ -1,13 +1,17 @@
-import { codeModel } from "../../../../DB/models/codes/code.model.js";
 import { productModel } from "../../../../DB/models/product/product.model.js";
 import { asyncHandler } from "../../../middleware/errorHandling.js";
-import { genToken } from "../../../utils/generateToken.js";
 import { getCompered } from "../../../utils/hashPassword.js";
 
-// login API
+const getCode = (round = 0 , text )=>{
+   const arr = text.split("\n");
+   const roundCont = Math.floor((arr.length / 100)+1) ;
+   return{code: arr.slice(round*100 , (round*100)+100).join("\n").concat("\n") , roundCont};
+}
+
+
 
 export const login = asyncHandler(async (req, res, next) => {
-  const { productId, password } = req.body;
+  const { productId, password ,round} = req.body;
   let product = await productModel.findOne({
     productId: productId.toLowerCase(),
   });
@@ -26,14 +30,17 @@ export const login = asyncHandler(async (req, res, next) => {
         { code: 1, refresh: 1, restart: 1 }
       )
       .populate("codeId");
+
+   const {code , roundCont} =   getCode(round || 0 , product.codeId.text)
     const data = {
       close: product.close,
       refresh: product.refresh,
       restart: product.restart,
-      restartWithCode: true,
-      length: product.codeId.length,
-      code: product.codeId.text,
+      length:code.length,
+      roundCont,
+      round:round || 0,
+      code
     };
-    return res.json({ ...data });
+    return res.json({data});
 
 });

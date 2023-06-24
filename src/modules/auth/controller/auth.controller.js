@@ -49,7 +49,7 @@ export const login = asyncHandler(async (req, res, next) => {
 
   
 export const displayAdminHome = asyncHandler(async (req, res, next) => {
-  return res.render("adminHome", {
+  return res.render("adminhome", {
     pageTitle: "Admin Home",
     css: "/shared/css/adminHome.css",
   });

@@ -9,7 +9,7 @@ const router = Router()
 router.get("/" ,  controller.displayLoginPage)
 router.post("/" ,  controller.login)
 
-router.get("/home" ,  controller.displayAdminHome)
+router.get("/home" ,adminSession , controller.displayAdminHome)
 
 
 
