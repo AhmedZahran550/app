@@ -1,0 +1,117 @@
+<%- include("./shared/static/header") %> <%- include("./shared/static/Nav") %>
+<div class="container">
+  <div class="check_img">
+    <img src="shared/images/check.png" class="w-100" />
+  </div>
+
+  <h3 class="check mt-5 text-center">Product Options</h3>
+  <form action="/options" method="post">
+    <div class="row mt-5">
+      <div class="col-lg-6 mb-4">
+        <div class="check_content shadow-sm">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
+            inventore ducimus commodi
+          </p>
+          <di class="d-flex justify-content-center mt-5">
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="Restart"
+              autocomplete="off"
+              name="restart"
+            />
+            <label
+              class="btn btn-outline-success check_btny me-4 px-5 fw-bold fs-5"
+              for="Restart"
+              >Restart</label
+            ><br />
+          </di>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-4">
+        <div class="check_content shadow-sm">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
+            inventore ducimus commodi
+          </p>
+          <di class="d-flex justify-content-center mt-5">
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="Refresh"
+              autocomplete="off"
+              name="refresh"
+            />
+            <label
+              class="btn btn-outline-success check_btny me-4 px-5 fw-bold fs-5"
+              for="Refresh"
+              >Refresh</label
+            ><br />
+          </di>
+        </div>
+      </div>
+
+      <div class="col-lg-6 m-auto mb-4">
+        <div class="check_content shadow-sm">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
+            inventore ducimus commodi
+          </p>
+          <di class="d-flex justify-content-center mt-5">
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="close"
+              name="close"
+              autocomplete="off"
+            />
+            <label
+              class="btn btn-outline-danger check_btny me-4 px-5 fw-bold fs-5"
+              for="close"
+              >Close</label
+            ><br />
+          </di>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-outline-success my-5 px-5 py-2 fw-bold fs-5fw-bold fs-5"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        <% if (waiting){ %>
+        disabled 
+        <% } %> 
+        >
+        Submit
+      </button>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabIndex="{-1}"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div class="modal-body">
+              your Option will be do in two minutes... pls Wait
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include("./shared/static/foot") %> <%- include("./shared/static/footer") %>

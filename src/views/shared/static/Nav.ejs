@@ -28,6 +28,11 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if (isLogged) { %>
+          <li class="nav-item">
+            <a class="btn btn-outline-success me-2" href="/options">My Options</a>
+          </li>
+          <% } %>
         <li class="nav-item d-flex align-items-center justify-content-center">
           <form
             class="d-flex align-items-center justify-content-center"

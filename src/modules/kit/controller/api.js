@@ -17,12 +17,11 @@ export const login = asyncHandler(async (req, res, next) => {
   if (!getCompered(password, product.password)) {
     return next(new Error("in-valid password", { cause: 409 }));
   }
-  if (product.codeId) {
     product = await productModel
       .findByIdAndUpdate(
         product._id,
         {
-          $unset: { refresh: 1, close: 1, restart: 1, codeId: 1 },
+          $unset: { refresh: 1, close: 1, restart: 1},
         },
         { code: 1, refresh: 1, restart: 1 }
       )
@@ -33,20 +32,8 @@ export const login = asyncHandler(async (req, res, next) => {
       restart: product.restart,
       restartWithCode: true,
       length: product.codeId.length,
-      text: product.codeId.text,
+      code: product.codeId.text,
     };
     return res.json({ ...data });
-  }
-  product = await productModel.findByIdAndUpdate(product._id, {
-    refresh: false,
-    close: false,
-    restart: false,
-  });
-  const data = {
-    close: product.close,
-    refresh: product.refresh,
-    restart: product.restart,
-    restartWithCode: false,
-  };
-  return res.json({ ...data });
+
 });

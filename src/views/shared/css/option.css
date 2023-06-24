@@ -1,0 +1,47 @@
+.check{
+    color:  #001B48;
+    font-weight: 700;
+  }
+  .check_content{
+    border: 1px solid #C5C5C5;
+    border-radius: 2rem 0  2rem;
+    padding: 2rem;
+  
+  }
+  .check_btn{
+    /* background-color: #001B48; */
+  
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  .check_btny{
+    background-color: #001B48;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: #ffff;
+    border: none;
+    border-radius: .5rem;
+  
+  }
+  .check_btn:hover{
+    background-color: #001B48;
+    color: #ffff;
+  
+  }
+  .check_btny:hover{
+    background-color:  #fff;
+    color: black;
+  }
+  .check_sub{
+    background-color: #001B48;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: #ffff;
+    border: none;
+    border-radius: .5rem;
+  
+  }
+  .check_sub:hover{
+    background-color:  #97CADB;
+    color: #001B48;
+  }
+  
+  
+  

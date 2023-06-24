@@ -13,6 +13,7 @@ export const authSession = asyncHandler(async (req, res, next) => {
     req.flash("productIdError", "In-valid product Id ");
     return res.redirect("/login");
   }
+  req.product = product 
   return next();
 });
 
