@@ -89,7 +89,6 @@ export const displayOptions = asyncHandler(async (req, res, next) => {
   });
 });
 
-
 // change option
 export const changeOptions = asyncHandler(async (req, res, next) => {
   const { close, refresh, restart } = req.body;
@@ -98,7 +97,7 @@ export const changeOptions = asyncHandler(async (req, res, next) => {
     { close: !!close, refresh: !!refresh, restart: !!restart },
     {new:true}
   );
- return res.redirect("/Options");;
+ return res.redirect("/options");;
 });
 
 

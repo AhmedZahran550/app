@@ -20,7 +20,7 @@ export const addAdmin = asyncHandler(async (req, res, next) => {
 export const displayLoginPage = asyncHandler(async (req, res, next) => {
   return res.render("adminLogin", {
     pageTitle: "Admin Login",
-    css: "/shared/css/admin.css",
+    css: "/shared/css/admin.css", 
     oldData: req.flash("oldData")[0],
     emailError: req.flash("emailError")[0],
     passwordError: req.flash("passwordError")[0],

@@ -1,45 +1,30 @@
 <%- include("./shared/static/header") %>
-
-  <div class="home bg-dark">
-    <div class="container-fluid">
-      <div class="row login align-content-center justify-content-center ">
-        <div class="col-md-6">
-          <h2 class="text-center text-white">Admin login</h2>
-          <form action="/admin" method="post" class="text-white">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label ">Admin Email</label>
-              <input value="<%= oldData?.email %>" type="text" name="email" class="form-control text-primary input" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-
-              <% if (emailError) { %>
-                <div class="text-warning  p-1">
-                  <%= emailError %> 
-                </div>
-                <% } %>
-
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input value="<%= oldData?.password %>" type="password" name="password" class="form-control  text-primary input" id="exampleInputPassword1">
+<div class="bg-black">
+    <div class="container ">
+      <div class="row vh-100">
+        <div class="col-md-8 m-auto align-self-center">
+          <form class="form row" action="/admin" method="post">
+            <h2 class="text-center text-white">Admin login</h2>
+            <input placeholder="Enter your email" class="input my-3" value="<%= oldData?.email %>" type="text" name="email" >
+            <% if (emailError) { %>
+              <div class="text-danger  text-center  p-1">
+                <%= emailError %> 
+              </div>
+              <% } %>
+              <input placeholder="*********" class="input my-3" value="<%= oldData?.password %>" type="password" name="password" >
               <% if (passwordError) { %>
-                <div class="text-warning p-1">
+                <div class="text-danger text-center p-1">
                   <%= passwordError %>
                 </div>
                 <% } %>
-                <div id="emailHelp" class="form-text  text-secondary">We'll never share your password with anyone else.
-                </div>
-
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-              </div>
-              <button class="btn btn-primary">LogIn</button>
-            </div>
+            <button class="w-50">Login</button>
           </form>
         </div>
-
+       
       </div>
+     
     </div>
   </div>
-  </div>
+ 
+ 
   <%- include("./shared/static/footer") %>
