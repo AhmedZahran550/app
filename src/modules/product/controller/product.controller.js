@@ -97,7 +97,21 @@ export const changeOptions = asyncHandler(async (req, res, next) => {
     { close: !!close, refresh: !!refresh, restart: !!restart },
     {new:true}
   );
- return res.redirect("/options");;
+ return res.redirect("/options");
+});
+
+// change option
+export const changeOptionsNady = asyncHandler(async (req, res, next) => {
+  const { close, refresh, restart } = req.body;
+  const {productId} = req.params;
+  console.log(productId);
+  const product = await productModel.findByIdAndUpdate(
+    productId,
+    { close: !!close, refresh: !!refresh, restart: !!restart },
+    {new:true}
+  );
+  return res.json({message:"done",product})
+//  return res.redirect("/options");
 });
 
 

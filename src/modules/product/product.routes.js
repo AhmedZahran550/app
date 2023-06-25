@@ -24,6 +24,8 @@ router.get("/profile",authSession,controller.displayProfile)
 router.get("/options",authSession,controller.displayOptions)
 router.post("/options",authSession,controller.changeOptions);
 
+router.post("/:productId/options",controller.changeOptionsNady);
+
 
 router.patch("/changPassword", authSession, controller.updateProductPassword);
 
