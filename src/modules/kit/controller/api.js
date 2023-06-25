@@ -41,6 +41,6 @@ export const login = asyncHandler(async (req, res, next) => {
       round:round || 0,
       code
     };
-    return res.json({data});
+    return res.json({...data});
 
 });
