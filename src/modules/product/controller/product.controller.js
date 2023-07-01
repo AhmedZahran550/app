@@ -74,30 +74,32 @@ export const displayProfile = asyncHandler(async (req, res, next) => {
   });
 });
 
+
 // start of Options page
 export const displayOptions = asyncHandler(async (req, res, next) => {
-  const { close, refresh, restart } = req.product;
-  if (close || refresh || restart ) {
-    req.flash("waiting", true);
-  }
+  const {turnOn,turnOff,refresh,restart ,restartWithCode} = req.product
   return res.render("productOption", {
     pageTitle: "Options",
     css: "/shared/css/option.css",
     productInfo: req.flash("productInfo")[0],
-    waiting: req.flash("waiting")[0],
+    refresh,
+    restart,
+    turnOn,
+    restartWithCode,
     isLogged: true,
   });
 });
 
 // change option
 export const changeOptions = asyncHandler(async (req, res, next) => {
-  const { close, refresh, restart } = req.body;
+  const { power, refresh, restart } = req.body;
   const product = await productModel.findByIdAndUpdate(
     req.session.product._id,
-    { close: !!close, refresh: !!refresh, restart: !!restart },
+    { turnOn:!!power,turnOff:power?false:true,refresh:!!refresh,restart:!!restart },
     {new:true}
   );
- return res.redirect("/options");
+  console.log(product);
+//  return res.redirect("/options");
 });
 
 // change option

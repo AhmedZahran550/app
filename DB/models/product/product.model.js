@@ -47,4 +47,5 @@ const schema = new Schema({
     });
 
 
+
 export const productModel = mongoose.models.Product || model("Product", schema);

@@ -16,7 +16,12 @@
           </p>
           <div class="d-flex justify-content-center mt-5">
             <label class="rocker rocker-small">
-              <input type="checkbox"  name="restart"  autocomplete="off">
+              <input type="checkbox"  name="restart"
+              <% if (restart){ %>
+                value='true'
+                checked
+                disabled 
+                <% } %>   autocomplete="off">
               <span class="switch-left">Yes</span>
               <span class="switch-right">No</span>
            </label>
@@ -33,7 +38,12 @@
           </p>
           <di class="d-flex justify-content-center mt-5">
             <label class="rocker rocker-small">
-              <input type="checkbox"  name="refresh"  autocomplete="off">
+              <input type="checkbox"  name="refresh" 
+              <% if (refresh){ %>
+                value='true'
+                checked
+                disabled 
+                <% } %> autocomplete="off">
               <span class="switch-left">Yes</span>
               <span class="switch-right">No</span>
            </label>
@@ -43,16 +53,18 @@
 
       <div class="col-lg-6 m-auto mb-4">
         <div class="check_content shadow-sm">
-          <dev class="text-center h2 text-danger"><h3>Close</h3></dev>
+          <dev class="text-center h2 text-danger"><h3>Power</h3></dev>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
             inventore ducimus commodi
           </p>
           <di class="d-flex justify-content-center mt-5">
             <label class="rocker rocker-small">
-              <input type="checkbox"  name="close"  autocomplete="off">
-              <span class="switch-left">Yes</span>
-              <span class="switch-right">No</span>
+              <input type="checkbox"  name="power" <% if (turnOn) { %>
+               checked
+              <% } %> autocomplete="off">
+              <span class="switch-left">ON</span>
+              <span class="switch-right">OFF</span>
            </label>
           </di>
         </div>
@@ -64,10 +76,9 @@
         class="btn btn-outline-success my-5 px-5 py-2 fw-bold fs-5fw-bold fs-5"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
-        <% if (waiting){ %>
-        disabled 
-        <% } %> 
-        >
+        <% if (restartWithCode){ %>
+          disabled 
+          <% } %>>
         Submit
       </button>
       <div
@@ -88,7 +99,7 @@
               />
             </div>
             <div class="modal-body">
-              your Option will be do in two minutes... pls Wait
+              your Option will be done in two minutes... pls Wait
             </div>
           </div>
         </div>
