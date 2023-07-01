@@ -20,11 +20,19 @@ const schema = new Schema({
         type:Boolean,
         default:false
     },
-    close:{
+    turnOn:{
+        type:Boolean,
+        default:false
+    },
+    turnOff:{
         type:Boolean,
         default:false
     },
     restart:{
+        type:Boolean,
+        default:false
+     },
+     restartWithCode:{
         type:Boolean,
         default:false
      },

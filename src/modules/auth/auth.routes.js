@@ -11,6 +11,8 @@ router.post("/" ,  controller.login)
 
 router.get("/home" ,adminSession , controller.displayAdminHome)
 
+router.get("/details/:id" ,adminSession , controller.displayProductDetails)
+
 
 
 router.post("/admin" ,  controller.addAdmin)

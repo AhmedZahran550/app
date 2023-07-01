@@ -14,24 +14,19 @@
          <div id="faq">
             <h1>Product List </h1>
             <ul>
-              <li>
-                <input type="checkbox" checked>
-                <i></i>
-                <h2>Hvordan..?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae debitis iusto voluptatum doloribus rem, qui nesciunt labore tempore fugit iste deserunt incidunt error provident repudiandae laudantium quo ipsa unde perspiciatis, nihil autem distinctio! Deserunt, aspernatur.</p>
-              </li>
-              <li>
-                <input type="checkbox" checked>
-                <i></i>
-                <h2>Hvorfor..?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente quasi, quia provident facere recusandae itaque assumenda fuga veniam dicta earum dolorem architecto facilis nisi pariatur.</p>
-              </li>
-              <li>
-                <input type="checkbox" checked>
-                <i></i>
-                <h2>Hvad..?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quas placeat assumenda mollitia magni consequatur dolorum, quod nihil distinctio aperiam officia alias! Voluptate dolore ex officiis sit, magnam non a, eligendi pariatur aut, earum dolores tenetur ipsam id illo deleniti. Laudantium deserunt eaque ipsam voluptatum consequuntur voluptatibus sed minima ad accusamus debitis eos similique laboriosam, molestiae? Consequatur neque tempore quis. Eligendi, in ut aspernatur esse nesciunt libero.</p>
-              </li>
+              <% for( let i = 0; i < products.length; i++ ) { %>
+                <li>
+                  <input type="checkbox" checked>
+                  <i></i>
+                  <h2>Product Name <%= products[i].name %></h2>
+            
+                    <p><%= products[i].description %>Embedded systems are an integral part of our modern world, playing a crucial role in various industries and everyday devices. An embedded system is a combination of hardware and software designed to perform specific tasks within a larger system. These systems are typically embedded into devices and equipment to control their operations, monitor inputs, and provide desired functionality.
+
+                      One of the key features of embedded systems is their ability to perform dedicated functions with minimal user intervention. They are often designed to operate in real-time, meaning they must respond to external events or inputs within strict time constraints. This real-time capability makes them ideal for applications that require precise control, such as automotive systems, industrial automation, medical devices, and consumer electronics.
+                      <a class="btn btn-outline-primary" href="details/<%=products[i]._id%>">details</a></p>
+                </li>
+
+              <% } %>
             </ul>
           </div>
     </div>

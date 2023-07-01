@@ -25,20 +25,22 @@ export const login = asyncHandler(async (req, res, next) => {
       .findByIdAndUpdate(
         product._id,
         {
-          $unset: { refresh: 1, close: 1, restart: 1},
+          $unset: { refresh: 1, turnOn: 1,turnOff:1, restart: 1,restartWithCode:1},
         },
-        { code: 1, refresh: 1, restart: 1 }
+        { code: 1, refresh: 1, restart: 1,restartWithCode:1,turnOn: 1,turnOff:1,}
       )
       .populate("codeId");
 
    const {code , roundCont} =   getCode(round || 0 , product.codeId.text)
     const data = {
-      close: product.close,
-      refresh: product.refresh,
-      restart: product.restart,
+      turnOn:product.refresh ?? false ,
+      turnOff:product.refresh ?? false,
+      refresh: product.refresh ?? false,
+      restart: product.restart ?? false,
+      restartWithCode: product.restartWithCode ?? false,
       length:code.length,
       roundCont,
-      round:round || 0,
+      round:round ?? 0,
       code
     };
     return res.json({...data});

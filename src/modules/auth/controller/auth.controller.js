@@ -1,7 +1,6 @@
 import { adminModel } from "../../../../DB/models/admin/admin.model.js";
 import { getCompered, getHashed } from "../../../utils/hashPassword.js";
 import { asyncHandler } from "./../../../middleware/errorHandling.js";
-import jwt from "jsonwebtoken";
 import { productModel } from "../../../../DB/models/product/product.model.js";
 
 export const addAdmin = asyncHandler(async (req, res, next) => {
@@ -49,11 +48,24 @@ export const login = asyncHandler(async (req, res, next) => {
 
   
 export const displayAdminHome = asyncHandler(async (req, res, next) => {
+  const products = await productModel.find({})
   return res.render("adminhome", {
     pageTitle: "Admin Home",
     css: "/shared/css/adminHome.css",
+    products
   });
 });
+
+// product details 
+export const displayProductDetails = asyncHandler(async (req, res, next) => {
+  const products = await productModel.find({})
+  return res.render("adminhome", {
+    pageTitle: "Admin Home",
+    css: "/shared/css/adminHome.css",
+    products
+  });
+});
+
 
 
 
