@@ -64,7 +64,6 @@ export const loginToDashboard = asyncHandler(async (req, res, next) => {
 // start of profile page
 export const displayProfile = asyncHandler(async (req, res, next) => {
   const codes = await codeModel.find({productId:req.product._id}).sort({'createdAt': 1});
-  console.log(codes[0]);
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
@@ -95,18 +94,16 @@ export const changeOptions = asyncHandler(async (req, res, next) => {
   const { power, refresh, restart } = req.body;
   const product = await productModel.findByIdAndUpdate(
     req.session.product._id,
-    { turnOn:!!power,turnOff:power?false:true,refresh:!!refresh,restart:!!restart },
+    { turnOn:!!power , turnOff:power?false:true,refresh:!!refresh,restart:!!restart },
     {new:true}
   );
-  console.log(product);
-//  return res.redirect("/options");
+ return res.redirect("/options");
 });
 
 // change option
 export const changeOptionsNady = asyncHandler(async (req, res, next) => {
   const { close, refresh, restart } = req.body;
   const {productId} = req.params;
-  console.log(productId);
   const product = await productModel.findByIdAndUpdate(
     productId,
     { close: !!close, refresh: !!refresh, restart: !!restart },

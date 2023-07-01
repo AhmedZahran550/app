@@ -22,7 +22,7 @@ const schema = new Schema({
     },
     turnOn:{
         type:Boolean,
-        default:false
+        default:true
     },
     turnOff:{
         type:Boolean,
