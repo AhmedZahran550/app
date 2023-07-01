@@ -1,6 +1,8 @@
 <nav class="navbar p-4 navbar-expand-lg navbar-light bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand text-info fs-3" href="/">FOTA</a>
+    <a class="navbar-brand text-info fs-3" style="width: 16%" href="/"
+      ><img src="shared/images/123.png" class="w-100" alt=""
+    /></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -29,10 +31,10 @@
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if (isLogged) { %>
-          <li class="nav-item">
-            <a class="btn btn-outline-success me-2" href="/options">My Options</a>
-          </li>
-          <% } %>
+        <li class="nav-item">
+          <a class="btn btn-outline-success me-2" href="/options">My Options</a>
+        </li>
+        <% } %>
         <li class="nav-item d-flex align-items-center justify-content-center">
           <form
             class="d-flex align-items-center justify-content-center"
@@ -51,17 +53,13 @@
         <li class="nav-item">
           <a class="btn btn-outline-info" href="/login">Login</a>
         </li>
-        <% } %>
-
-         <% if (isLogged) { %>
+        <% } %> <% if (isLogged) { %>
         <li class="nav-item">
           <a class="btn btn-outline-info me-2" href="/profile">Profile</a>
         </li>
-        <% } %>
-        
-        <% if (isLogged) { %>
+        <% } %> <% if (isLogged) { %>
         <li class="nav-item">
-          <a class="btn btn-outline-info" href="/logout">LogOut</a>
+          <a class="btn btn-outline-danger" href="/logout">LogOut</a>
         </li>
         <% } %>
       </ul>

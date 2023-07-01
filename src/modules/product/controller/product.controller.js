@@ -63,20 +63,22 @@ export const loginToDashboard = asyncHandler(async (req, res, next) => {
 
 // start of profile page
 export const displayProfile = asyncHandler(async (req, res, next) => {
-  const codes = await codeModel.find({productId:req.product._id}).sort({'createdAt': 1});
+  const codes = await codeModel
+    .find({ productId: req.product._id })
+    .sort({ createdAt: 1 });
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
     productInfo: req.flash("productInfo")[0],
+    updating: req.flash("updating")[0],
     codes,
     isLogged: true,
   });
 });
 
-
 // start of Options page
 export const displayOptions = asyncHandler(async (req, res, next) => {
-  const {turnOn,turnOff,refresh,restart ,restartWithCode} = req.product
+  const { turnOn, turnOff, refresh, restart, restartWithCode } = req.product;
   return res.render("productOption", {
     pageTitle: "Options",
     css: "/shared/css/option.css",
@@ -94,25 +96,29 @@ export const changeOptions = asyncHandler(async (req, res, next) => {
   const { power, refresh, restart } = req.body;
   const product = await productModel.findByIdAndUpdate(
     req.session.product._id,
-    { turnOn:!!power , turnOff:power?false:true,refresh:!!refresh,restart:!!restart },
-    {new:true}
+    {
+      turnOn: !!power,
+      turnOff: power ? false : true,
+      refresh: !!refresh,
+      restart: !!restart,
+    },
+    { new: true }
   );
- return res.redirect("/options");
+  return res.redirect("/options");
 });
 
 // change option
 export const changeOptionsNady = asyncHandler(async (req, res, next) => {
   const { close, refresh, restart } = req.body;
-  const {productId} = req.params;
+  const { productId } = req.params;
   const product = await productModel.findByIdAndUpdate(
     productId,
     { close: !!close, refresh: !!refresh, restart: !!restart },
-    {new:true}
+    { new: true }
   );
-  return res.json({message:"done",product})
-//  return res.redirect("/options");
+  return res.json({ message: "done", product });
+  //  return res.redirect("/options");
 });
-
 
 // ==============productList
 export const productList = asyncHandler(async (req, res, next) => {

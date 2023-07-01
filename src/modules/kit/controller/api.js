@@ -34,6 +34,7 @@ export const login = asyncHandler(async (req, res, next) => {
         $unset: { refresh: 1, restart: 1, restartWithCode: 1 },
       }
     );
+    return res.json({ unset: true });
   }
   product = await productModel
     .findById(product._id, {
