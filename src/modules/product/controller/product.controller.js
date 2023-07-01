@@ -65,7 +65,7 @@ export const loginToDashboard = asyncHandler(async (req, res, next) => {
 export const displayProfile = asyncHandler(async (req, res, next) => {
   const codes = await codeModel
     .find({ productId: req.product._id })
-    .sort({ createdAt: 1 });
+    .sort({ createdAt: -1 });
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
