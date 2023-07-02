@@ -29,11 +29,11 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-<%= index %>">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
-                        version <%= codes[index].__v %>
+                        version <%= codes[index].version %>
                       </button>
                     </h2>
                     <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-<%= index %>" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis quod voluptatum quisquam maiores est eligendi ullam debitis at placeat, quam earum voluptates distinctio expedita et alias vitae?</p> <a class="btn btn-outline-primary me-auto" href="code/<%= codes[index]._id %>/update">upload Code</a></div>
+                      <div class="accordion-body"><p> <%= codes[index].description %>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis quod voluptatum quisquam maiores est eligendi ullam debitis at placeat, quam earum voluptates distinctio expedita et alias vitae?</p> <a class="btn btn-outline-primary me-auto" href="code/<%= codes[index]._id %>/update">upload Code</a></div>
                     </div>
                   </div>
             <% } %>
