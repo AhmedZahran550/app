@@ -47,11 +47,12 @@ export const login = asyncHandler(async (req, res, next) => {
 });
 
 export const displayAdminHome = asyncHandler(async (req, res, next) => {
-  const products = await productModel.find({});
+  const products = await productModel.find({}).sort({ createdAt: -1 });;
   return res.render("adminhome", {
     pageTitle: "Admin Home",
     css: "/shared/css/adminHome.css",
     products,
+    newProductError:req.flash("newProductError")[0]
   });
 });
 
@@ -61,21 +62,24 @@ export const displayAdminHome = asyncHandler(async (req, res, next) => {
 
 //  adding product ======================
 export const addProduct = asyncHandler(async (req, res, next) => {
-  const { productId, password } = req.body;
+  const { productId, password ,description} = req.body;
   const product = await productModel.findOne({
     productId: productId.toLowerCase(),
   });
   if (product) {
-    return next(new Error("Duplicated productId "));
+    req.flash("newProductError","Duplicated productId ")
+    return res.redirect('/admin/home');
   }
   const hash = getHashed(password);
   const newProduct = await productModel.create({
     productId: productId.toLowerCase(),
     password: hash,
     adminId: req.session?.admin?._id,
+    description
   });
-  return res.json({ message: "created", newProduct });
+  return res.redirect('/admin/home');
 });
+
 
 // product details
 export const displayProductDetails = asyncHandler(async (req, res, next) => {

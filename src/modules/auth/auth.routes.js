@@ -21,6 +21,6 @@ router.get(
 
 router.post("/admin", controller.addAdmin);
 
-router.post("/add", adminSession, controller.addProduct);
+router.post("/product/add", adminSession, controller.addProduct);
 
 export default router;

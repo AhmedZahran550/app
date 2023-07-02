@@ -16,6 +16,10 @@ const schema = new Schema({
         type:String ,
         required:true
     },
+    description:{
+        type:String ,
+        required:true
+    },
     refresh:{
         type:Boolean,
         default:false

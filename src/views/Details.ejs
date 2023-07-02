@@ -56,17 +56,77 @@
       </div>
       <div class="text-center m-auto my-4  w-75">
         <h2 class="h1">realsed versions of product softWare</h2>
-    </div>
+      </div>
+      <div class="text-end m-3 px-5 w-75">
+        <i   
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo" 
+        class="fa-solid fa-square-plus fa-3x text-primary"
+        style="cursor: pointer;"
+        ></i>
+      </div>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New SoftWare</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form class="text-start form" enctype="multipart/form-data" action="/code/<%= product._id %>/add"  method="post">
+                <div class="mb-3">
+                  <label for="version" class="col-form-label"
+                    >Version:</label>
+                  <input class="form-control" type="text" id="version" required name="version">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label"
+                    >description:</label>
+                  <textarea class="form-control" id="message-text" required name="description"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="file" class="col-form-label"
+                    >code.text file:</label>
+                  <input class="form-control" type="file" accept="text/plain" required id="file" name="code">
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary" >Save</button>
+                </div>
+              </form>
+            </div>
+          
+          </div>
+        </div>
+      </div>
     <div class="accordion accordion-flush text-info w-75 m-auto" id="accordionFlushExample">
         <% for( let index = 0; index < codes.length; index++ ) { %>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-<%= index %>">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
-                    version <%= codes[index].__v %>
+                    version <%= codes[index].version %>
                   </button>
                 </h2>
                 <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-<%= index %>" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis quod voluptatum quisquam maiores est eligendi ullam debitis at placeat, quam earum voluptates distinctio expedita et alias vitae?
+                  <div class="accordion-body"><p> <%= codes[index].description %>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis quod voluptatum quisquam maiores est eligendi ullam debitis at placeat, quam earum voluptates distinctio expedita et alias vitae?
                     <div>
                         <a class="btn btn-outline-primary me-auto" href="/admin/<%= codes[index]._id %>/edit">Edit Code</a>
                         <a class="btn btn-outline-danger me-auto" href="/admin/<%= product._id %>/delete/<%= codes[index]._id %>">Delete Code</a>
