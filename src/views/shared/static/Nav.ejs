@@ -32,7 +32,9 @@
           <a class="nav-link" href="/contact">Contact</a>
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center justify-content-md-between item ">
+      <ul
+        class="navbar-nav ms-auto mb-2 mb-lg-0 text-center justify-content-md-between item"
+      >
         <li class="nav-item d-flex align-items-center justify-content-center">
           <form
             class="d-flex align-items-center justify-content-center"
@@ -46,22 +48,25 @@
             />
           </form>
         </li>
-     <% if (isLogged) { %>
+        <% if (isLogged) { %>
         <li class="nav-item">
-          <a class="text-success text-decoration-none me-2" href="/options">My Options</a>
+          <a class="text-success text-decoration-none me-2" href="/options"
+            >My Options</a
+          >
         </li>
-        <% } %>
-        <% if (!isLogged) { %>
+        <% } %> <% if (!isLogged) { %>
         <li class="nav-item">
           <a class="text-info text-decoration-none" href="/login">Login</a>
         </li>
         <% } %> <% if (isLogged) { %>
         <li class="nav-item">
-          <a class="text-info text-decoration-none me-2" href="/profile">Profile</a>
+          <a class="text-info text-decoration-none me-2" href="/profile"
+            >Profile</a
+          >
         </li>
         <% } %> <% if (isLogged) { %>
         <li class="nav-item">
-          <a class="text-danger text-decoration-none " href="/logout">LogOut</a>
+          <a class="text-danger text-decoration-none" href="/logout">LogOut</a>
         </li>
         <% } %>
       </ul>
