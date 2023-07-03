@@ -26,6 +26,9 @@ export const login = asyncHandler(async (req, res, next) => {
   if (!getCompered(password, product.password)) {
     return next(new Error("in-valid password", { cause: 409 }));
   }
+  if (!product.codeId) {
+    return res.json({message:" upload FirmWare First"});
+  }
   if (done) {
     await productModel.updateOne(
       {
@@ -49,7 +52,7 @@ export const login = asyncHandler(async (req, res, next) => {
       turnOff: 1,
     })
     .populate("codeId");
-  const { code, roundCont } = getCode(round || 0, product.codeId.text);
+  const { code, roundCont } = getCode(round || 0, product.codeId?.text);
   const data = {
     turnOn: product.turnOn,
     turnOff: product.turnOff,
