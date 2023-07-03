@@ -77,9 +77,6 @@
   }
   
   
-  .col_text {
-    padding: 3rem;
-  }
   
   .p_text {
     text-align: justify;
@@ -87,7 +84,7 @@
   
   .home_btn{
     margin: auto;
-    margin-top: 6rem;
+    margin-top: 2rem;
     padding: .8rem;
     border-radius: 1rem;
     color: #ffff;

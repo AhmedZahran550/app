@@ -109,18 +109,7 @@ export const changeOptions = asyncHandler(async (req, res, next) => {
   return res.redirect("/options");
 });
 
-// ==============productList
-export const productList = asyncHandler(async (req, res, next) => {
-  if (req.session?.product) {
-    req.flash("isLogged", true);
-  }
-  return res.render("productList", {
-    pageTitle: "productList",
-    css: "/shared/css/home.css",
-    products: req.flash("products")[0],
-    isLogged: req.flash("isLogged")[0],
-  });
-});
+
 
 export const updateProductPassword = asyncHandler(async (req, res, next) => {
   const { password } = req.body;
