@@ -2,6 +2,7 @@ import { asyncHandler } from "./../../../middleware/errorHandling.js";
 import { productModel } from "./../../../../DB/models/product/product.model.js";
 import { getCompered, getHashed } from "../../../utils/hashPassword.js";
 import { codeModel } from "./../../../../DB/models/codes/code.model.js";
+import moment from "moment/moment.js";
 
 // start of home page
 export const displayHome = asyncHandler(async (req, res, next) => {
@@ -66,11 +67,13 @@ export const displayProfile = asyncHandler(async (req, res, next) => {
   const codes = await codeModel
     .find({ productId: req.product._id })
     .sort({ createdAt: -1 });
+    const diff = moment(new Date()).diff(req.product.lastActive,"minutes")
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
     productInfo: req.product,
     updating: req.flash("updating")[0],
+    isActive:(diff>3)?false:true,
     codes,
     isLogged: true,
   });

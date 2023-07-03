@@ -15,6 +15,9 @@
 <% } %>
 
 <section class="container">
+  <% if (!isActive) { %>
+    <div class="alert alert-danger m-3 p-3 text-center">your hard ware is Off you need to check it </div>
+   <% } %>
   <div
     class="background_image d-flex align-items-center flex-column justify-content-center"
   >
@@ -26,8 +29,13 @@
       <img loading="lazy" src="../shared/images/logo.png" class="w-50" />
     </div>
   </div>
-  <div class="text-center m-auto my-4">
+  <div class="text-center m-auto d-flex my-4 align-items-baseline">
     <h2 class="h1">realsed versions of your product softWare</h2>
+      
+        <a class="btn btn-outline-info  ms-auto text-decoration-none " href="/options"
+          >My Options</a
+        >
+
   </div>
   <div class="accordion accordion-flush text-info" id="accordionFlushExample">
     <% for( let index = 0; index < codes.length; index++ ) { %>

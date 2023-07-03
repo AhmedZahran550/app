@@ -1,6 +1,7 @@
 import { productModel } from "../../../../DB/models/product/product.model.js";
 import { asyncHandler } from "../../../middleware/errorHandling.js";
 import { getCompered } from "../../../utils/hashPassword.js";
+import  moment  from 'moment/moment.js';
 
 const getCode = (round = 0, text) => {
   const arr = text.split("\n");
@@ -34,6 +35,8 @@ export const login = asyncHandler(async (req, res, next) => {
         $unset: { restart: 1, restartWithCode: 1 },
       }
     );
+    product.lastActive = moment(Date.now())
+    product.save();
     req.flash("updating", false);
     return res.json({ unset: true });
   }
@@ -57,5 +60,7 @@ export const login = asyncHandler(async (req, res, next) => {
     round: round ?? 0,
     code,
   };
+  product.lastActive = moment(Date.now())
+  product.save();
   return res.json({ ...data });
 });

@@ -39,6 +39,9 @@ const schema = new Schema({
      codeId:{
         type:Types.ObjectId,
         ref:"Code",
+     },
+     lastActive:{
+        type:Date,
      }  
      
 },
