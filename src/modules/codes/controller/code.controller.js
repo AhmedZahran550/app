@@ -31,12 +31,12 @@ export const addCode = asyncHandler(async (req, res, next) => {
   return  res.redirect(`/admin/details/${req.params.productId}`);
 });
 
-// export const update = asyncHandler(async (req, res, next) => {
-//   const { codeId } = req.params;
-//   await productModel.updateOne(
-//     { _id: req.product._id },
-//     { codeId, restartWithCode: true }
-//   );
-//   req.flash("updating", true);
-//   return res.redirect("/profile");
-// });
+export const update = asyncHandler(async (req, res, next) => {
+  const { codeId } = req.params;
+  await productModel.updateOne(
+    { _id: req.product._id },
+    { codeId, restartWithCode: true }
+  );
+  req.flash("updating", true);
+  return res.redirect("/profile");
+});

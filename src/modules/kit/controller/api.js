@@ -35,7 +35,7 @@ export const login = asyncHandler(async (req, res, next) => {
         _id: product._id,
       },
       {
-        $unset: { restart: 1, restartWithCode: 1 },
+        $unset: { restart: 1, refresh: 1, restartWithCode: 1 },
       }
     );
     product.lastActive = moment(Date.now())
@@ -47,6 +47,7 @@ export const login = asyncHandler(async (req, res, next) => {
     .findById(product._id, {
       code: 1,
       restart: 1,
+      refresh: 1,
       restartWithCode: 1,
       turnOn: 1,
       turnOff: 1,
@@ -57,6 +58,7 @@ export const login = asyncHandler(async (req, res, next) => {
     turnOn: product.turnOn,
     turnOff: product.turnOff,
     restart: product.restart,
+    refresh: product.refresh,
     restartWithCode: product.restartWithCode,
     length: code.length,
     roundCont,

@@ -32,6 +32,10 @@ const schema = new Schema({
         type:Boolean,
         default:false
      },
+    refresh:{
+        type:Boolean,
+        default:false
+     },
      restartWithCode:{
         type:Boolean,
         default:false

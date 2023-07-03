@@ -96,15 +96,15 @@ export const displayOptions = asyncHandler(async (req, res, next) => {
 
 // change option
 export const changeOptions = asyncHandler(async (req, res, next) => {
-  const { power, restart } = req.body;
+  const { power, restart ,refresh} = req.body;
   const product = await productModel.findByIdAndUpdate(
     req.session.product._id,
     {
       turnOn: !!power,
       turnOff: power ? false : true,
       restart: !!restart,
-    },
-    { new: true }
+      refresh: !!refresh,
+    }
   );
   return res.redirect("/options");
 });

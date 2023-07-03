@@ -10,6 +10,10 @@ export const authSession = asyncHandler(async (req, res, next) => {
   }
   const product = await productModel.findById(req.session?.product?._id);
   if (!product) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+      }});
     req.flash("productIdError", "In-valid product Id ");
     return res.redirect("/login"); 
   }
