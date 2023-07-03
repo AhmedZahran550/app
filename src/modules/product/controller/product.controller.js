@@ -69,7 +69,7 @@ export const displayProfile = asyncHandler(async (req, res, next) => {
   return res.render("profile", {
     pageTitle: "profile",
     css: "/shared/css/home.css",
-    productInfo: req.flash("productInfo")[0],
+    productInfo: req.product,
     updating: req.flash("updating")[0],
     codes,
     isLogged: true,
@@ -82,7 +82,7 @@ export const displayOptions = asyncHandler(async (req, res, next) => {
   return res.render("productOption", {
     pageTitle: "Options",
     css: "/shared/css/option.css",
-    productInfo: req.flash("productInfo")[0],
+    productInfo: req.product,
     refresh,
     restart,
     turnOn,

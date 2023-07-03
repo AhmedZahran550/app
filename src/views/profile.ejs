@@ -1,46 +1,71 @@
-<%- include("./shared/static/header") %>
-<%- include("./shared/static/Nav") %>
+<%- include("./shared/static/header") %> <%- include("./shared/static/Nav") %>
 <style>
-    .background_image {
+  .background_image {
     height: 50vh;
   }
 </style>
 <% if (updating) { %>
- <script>
-    alert("your product will be updated in a while pls wait")
+<script>
+  alert("your product will be updated in a while pls wait");
 </script>
 <% } %>
 
-    <section class="container">
-        <div class="background_image d-flex  align-items-center flex-column justify-content-center">
-            <div class="home_contect">
-                <h1 class="text-wrap">
-                    Fota <br />
-                    Firmware over the Air
-                </h1>
-                <img loading="lazy" src="../shared/images/logo.png" class="w-50" />
-            </div>
+<section class="container">
+  <div
+    class="background_image d-flex align-items-center flex-column justify-content-center"
+  >
+    <div class="home_contect">
+      <h1 class="text-wrap">
+        Fota <br />
+        Firmware over the Air
+      </h1>
+      <img loading="lazy" src="../shared/images/logo.png" class="w-50" />
+    </div>
+  </div>
+  <div class="text-center m-auto my-4">
+    <h2 class="h1">realsed versions of your product softWare</h2>
+  </div>
+  <div class="accordion accordion-flush text-info" id="accordionFlushExample">
+    <% for( let index = 0; index < codes.length; index++ ) { %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-<%= index %>">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapse<%= index %>"
+          aria-expanded="false"
+          aria-controls="flush-collapse<%= index %>"
+        >
+          version <%= codes[index].version %> <% if
+          (codes[index].equals(productInfo.codeId)) { %>
+          <span class="text-primary mx-3"> (current Version)</span>
+          <% } %>
+        </button>
+      </h2>
+      <div
+        id="flush-collapse<%= index %>"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-<%= index %>"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          <p>
+            <%= codes[index].description %>Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis
+            quod voluptatum quisquam maiores est eligendi ullam debitis at
+            placeat, quam earum voluptates distinctio expedita et alias vitae?
+          </p>
+          <a
+            class="btn btn-outline-primary me-auto"
+            href="code/<%= codes[index]._id %>/update"
+            >upload Code</a
+          >
         </div>
-        <div class="text-center m-auto my-4">
-            <h2 class="h1">realsed versions of your product softWare</h2>
-        </div>
-        <div class="accordion accordion-flush text-info" id="accordionFlushExample">
-            <% for( let index = 0; index < codes.length; index++ ) { %>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-<%= index %>">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
-                        version <%= codes[index].version %>
-                      </button>
-                    </h2>
-                    <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-<%= index %>" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"><p> <%= codes[index].description %>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque, blanditiis perspiciatis quod voluptatum quisquam maiores est eligendi ullam debitis at placeat, quam earum voluptates distinctio expedita et alias vitae?</p> <a class="btn btn-outline-primary me-auto" href="code/<%= codes[index]._id %>/update">upload Code</a></div>
-                    </div>
-                  </div>
-            <% } %>
-          
-          </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
 
-    </section>
-
-    <%- include("./shared/static/foot") %>
-    <%- include("./shared/static/footer") %>
+<%- include("./shared/static/foot") %> <%- include("./shared/static/footer") %>
