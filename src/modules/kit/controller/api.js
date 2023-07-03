@@ -31,15 +31,15 @@ export const login = asyncHandler(async (req, res, next) => {
         _id: product._id,
       },
       {
-        $unset: { refresh: 1, restart: 1, restartWithCode: 1 },
+        $unset: { restart: 1, restartWithCode: 1 },
       }
     );
+    req.flash("updating", false);
     return res.json({ unset: true });
   }
   product = await productModel
     .findById(product._id, {
       code: 1,
-      refresh: 1,
       restart: 1,
       restartWithCode: 1,
       turnOn: 1,
@@ -50,7 +50,6 @@ export const login = asyncHandler(async (req, res, next) => {
   const data = {
     turnOn: product.turnOn,
     turnOff: product.turnOff,
-    refresh: product.refresh,
     restart: product.restart,
     restartWithCode: product.restartWithCode,
     length: code.length,

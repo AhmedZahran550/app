@@ -1,11 +1,15 @@
 import { Router } from "express";
 import * as controller from "./controller/product.controller.js";
 import { authSession } from "./../../middleware/authToken.js";
+import { displayContact, displayHelp } from './pagescontroller/pages.js';
 
 const router = Router();
 
-//================display home
+//================display home  
 router.get("/", controller.displayHome);
+//================display home
+router.get("/contact", displayContact);
+router.get("/help", displayHelp);
 
 //================login======
 router.get("/login", controller.displayLoginPage);
@@ -18,7 +22,6 @@ router.get("/profile", authSession, controller.displayProfile);
 router.get("/options", authSession, controller.displayOptions);
 router.post("/options", authSession, controller.changeOptions);
 
-router.post("/:productId/options", controller.changeOptionsNady);
 
 router.patch("/changPassword", authSession, controller.updateProductPassword);
 

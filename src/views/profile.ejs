@@ -7,6 +7,10 @@
 <% if (updating) { %>
 <script>
   alert("your product will be updated in a while pls wait");
+  function autoRefresh() {
+        window.location = window.location.href;
+    }
+  setTimeout('autoRefresh()', 5000*30);
 </script>
 <% } %>
 

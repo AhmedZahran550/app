@@ -93,31 +93,17 @@ export const displayOptions = asyncHandler(async (req, res, next) => {
 
 // change option
 export const changeOptions = asyncHandler(async (req, res, next) => {
-  const { power, refresh, restart } = req.body;
+  const { power, restart } = req.body;
   const product = await productModel.findByIdAndUpdate(
     req.session.product._id,
     {
       turnOn: !!power,
       turnOff: power ? false : true,
-      refresh: !!refresh,
       restart: !!restart,
     },
     { new: true }
   );
   return res.redirect("/options");
-});
-
-// change option
-export const changeOptionsNady = asyncHandler(async (req, res, next) => {
-  const { close, refresh, restart } = req.body;
-  const { productId } = req.params;
-  const product = await productModel.findByIdAndUpdate(
-    productId,
-    { close: !!close, refresh: !!refresh, restart: !!restart },
-    { new: true }
-  );
-  return res.json({ message: "done", product });
-  //  return res.redirect("/options");
 });
 
 // ==============productList

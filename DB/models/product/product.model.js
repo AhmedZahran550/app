@@ -20,10 +20,6 @@ const schema = new Schema({
         type:String ,
         required:true
     },
-    refresh:{
-        type:Boolean,
-        default:false
-    },
     turnOn:{
         type:Boolean,
         default:true
